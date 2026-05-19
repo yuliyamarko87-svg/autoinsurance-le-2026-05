@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Auto Insurance For Around $1 A Day — Compare US Providers</title>
+<title>Cover Your Car For About $1 A Day</title>
 <link rel="stylesheet" href="assets/styles.css">
+
 </head>
 <body>
 <div class="advertorial-bar">Advertorial</div>
-
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="#" class="site-header__logo">DriverDigest</a>
-    <nav class="site-header__nav">US Auto Insurance Guide</nav>
+    <a href="#" class="site-header__logo">Driver<span>Digest</span></a>
+    <nav class="site-header__nav">US Auto Insurance Guide · 2026</nav>
   </div>
 </header>
 
@@ -21,30 +21,47 @@
   <div class="article__meta">
     <span><strong>By</strong> Jamie Reynolds</span>
     <span><strong>Updated</strong> May 19, 2026</span>
-    <span>5 min read</span>
+    <span>3 min read</span>
   </div>
-
   <h1 class="article__headline">Cover Your Car For About $1 A Day — Compare Top Auto Insurers</h1>
-  <p class="article__sub">Some US drivers cover their cars for the cost of a coffee — here&#x27;s how to see if you can.</p>
+  <p class="article__sub">Some US drivers cover their cars for the cost of a coffee — here's how to see if you can.</p>
+  
+<div class="article__hero">[Hero: coffee cup + handwritten note · crea-brief 13-A]</div>
 
-  <div class="article__hero">[Hero image — see crea-brief 13. Replace before launch.]</div>
+<div class="article__body">
+<p>Most US drivers think about auto insurance as a monthly bill, but a more useful frame is the daily cost. Many qualifying drivers in the US see rates around <strong>$1 a day</strong> for basic coverage — roughly the price of a coffee.</p>
+</div>
 
-  <div class="article__body">
-  <p>Most US drivers think about auto insurance as a monthly bill, but a useful way to frame it is per day. Many qualifying drivers in the US see rates around <strong>$1 a day</strong> for basic coverage — roughly the price of a coffee.</p>
-<p>That's <strong>about $30 a month</strong>. It depends on your state, your driving history, and the coverage you choose, but it's a useful benchmark when you compare quotes.</p>
-<div class="callout">Whether you end up at $1/day or higher, the comparison itself is the part that matters — it takes about 30 seconds and shows what's actually available for your profile.</div>
-<p>Enter your ZIP below to see your daily and monthly options.</p>
-  </div>
+<div class="tabs">
+  <button class="tabs__item tabs__item--active" data-period="day">Per day</button>
+  <button class="tabs__item" data-period="week">Per week</button>
+  <button class="tabs__item" data-period="month">Per month</button>
+  <button class="tabs__item" data-period="year">Per year</button>
+</div>
 
-  <section class="cta-section">
-    <h2 class="cta-section__title">See Your Auto Insurance Options</h2>
-    <p class="cta-section__sub">Free, takes about 30 seconds. Average monthly rates from $30.</p>
-    <form class="cta-form" novalidate>
-      <input class="cta-form__input" type="text" name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="Enter your ZIP code" required>
-      <button class="cta-form__button" type="submit">See My Quote</button>
-    </form>
-    <p class="cta-section__tiny">By continuing you agree to be matched with licensed agents. No spam. Rates may vary.</p>
-  </section>
+<div class="dollar-vis">
+  <div class="dollar-vis__big" id="dollar-big">$1</div>
+  <div class="dollar-vis__unit" id="dollar-unit">a day</div>
+  <div class="dollar-vis__compare" id="dollar-compare">About the price of a coffee.</div>
+</div>
+
+<div class="article__body">
+<p>Of course, $1/day is the entry point. Your actual rate depends on state, driving history, and coverage selected. But it's a useful benchmark — if you're paying significantly more, comparing other US providers usually reveals options closer to that line.</p>
+<div class="callout">$1/day = about $30/mo. Whether you land at that rate or higher, the 30-second comparison is the part that matters.</div>
+</div>
+
+
+<section class="cta-section">
+  <h2 class="cta-section__title">See Your Auto Insurance Options</h2>
+  <p class="cta-section__sub">See what about $1/day looks like for your car in your state.</p>
+  <form class="cta-form" novalidate>
+    <input class="cta-form__input" type="text" name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="Enter your ZIP code" required>
+    <button class="cta-form__button" type="submit">Check My Rate</button>
+  </form>
+  <p class="cta-section__tiny">Sample averages illustrative. Actual quote depends on full profile.</p>
+</section>
+
+
 </article>
 
 <footer class="disclaimer">
@@ -52,7 +69,31 @@
   <p>© 2026 DriverDigest. <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">CCPA</a></p>
 </footer>
 
-<script>window.OFFER_URL = window.OFFER_URL || 'https://example.com/quote';</script>
+<script>window.OFFER_URL = window.OFFER_URL || "https://example.com/quote";</script>
 <script src="assets/quote.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var tabs = document.querySelectorAll('.tabs__item');
+  var bigEl = document.getElementById('dollar-big');
+  var unitEl = document.getElementById('dollar-unit');
+  var cmpEl = document.getElementById('dollar-compare');
+  var data = {
+    day:   { big: '$1', unit: 'a day', cmp: 'About the price of a coffee.' },
+    week:  { big: '$7', unit: 'a week', cmp: 'About one combo meal at a sit-down lunch.' },
+    month: { big: '$30', unit: 'a month', cmp: 'About one streaming subscription.' },
+    year:  { big: '$360', unit: 'a year', cmp: 'About one weekend getaway.' }
+  };
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() {
+      tabs.forEach(function(x) { x.classList.remove('tabs__item--active'); });
+      t.classList.add('tabs__item--active');
+      var k = t.getAttribute('data-period');
+      bigEl.textContent = data[k].big;
+      unitEl.textContent = data[k].unit;
+      cmpEl.textContent = data[k].cmp;
+    });
+  });
+});
+</script>
 </body>
 </html>

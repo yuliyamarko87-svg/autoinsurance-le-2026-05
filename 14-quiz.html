@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Auto Insurance Match — Answer 3 Quick Questions</title>
+<title>Find Your Car Insurance Match In 3 Quick Questions</title>
 <link rel="stylesheet" href="assets/styles.css">
+
 </head>
 <body>
 <div class="advertorial-bar">Advertorial</div>
-
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="#" class="site-header__logo">DriverDigest</a>
-    <nav class="site-header__nav">US Auto Insurance Guide</nav>
+    <a href="#" class="site-header__logo">Driver<span>Digest</span></a>
+    <nav class="site-header__nav">US Auto Insurance Guide · 2026</nav>
   </div>
 </header>
 
@@ -21,37 +21,67 @@
   <div class="article__meta">
     <span><strong>By</strong> Jamie Reynolds</span>
     <span><strong>Updated</strong> May 19, 2026</span>
-    <span>5 min read</span>
+    <span>30 seconds</span>
   </div>
-
   <h1 class="article__headline">Answer 3 Quick Questions And See Your Auto Insurance Match</h1>
   <p class="article__sub">A short, no-pressure way to see what top US insurers would offer for your profile.</p>
+  
+<div class="article__body">
+<p>Some people like long forms. Most people don't. This is a shorter version — answer 3 quick questions about your driving and we'll match you with the auto insurance options most relevant to your profile.</p>
+</div>
 
-  <div class="article__hero">[Hero image — see crea-brief 14. Replace before launch.]</div>
+<div class="quiz">
+  <div class="quiz__progress"><div class="quiz__progress-fill" id="quiz-progress"></div></div>
 
-  <div class="article__body">
-  <p>Some people like long forms. Most people don't. This is a shorter version.</p>
-<p>Answer three quick questions about your driving and what coverage you'd want — and the tool matches you with auto insurance options from top US providers. Rates start <strong>around $30 a month</strong> for qualifying drivers.</p>
-<table class="compare-table">
-  <thead><tr><th>Step</th><th>What we ask</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>How many miles do you drive per day?</td></tr>
-    <tr><td>2</td><td>How many vehicles in your household?</td></tr>
-    <tr><td>3</td><td>What level of coverage do you want?</td></tr>
-  </tbody>
-</table>
-<p>That's it. Enter your ZIP below to get started.</p>
+  <div data-step="1" data-key="miles">
+    <p class="quiz__step-label">Step 1 of 3</p>
+    <p class="quiz__question">How many miles do you drive per day?</p>
+    <div class="quiz__options">
+      <button class="quiz__option" data-value="low">Under 25 miles · short commute</button>
+      <button class="quiz__option" data-value="mid">25 to 50 miles · typical</button>
+      <button class="quiz__option" data-value="high">Over 50 miles · long commute</button>
+    </div>
   </div>
 
-  <section class="cta-section">
-    <h2 class="cta-section__title">See Your Auto Insurance Options</h2>
-    <p class="cta-section__sub">Free, takes about 30 seconds. Average monthly rates from $30.</p>
+  <div data-step="2" data-key="vehicles" style="display:none">
+    <p class="quiz__step-label">Step 2 of 3</p>
+    <p class="quiz__question">How many vehicles in your household?</p>
+    <div class="quiz__options">
+      <button class="quiz__option" data-value="one">One</button>
+      <button class="quiz__option" data-value="two">Two</button>
+      <button class="quiz__option" data-value="three">Three or more</button>
+    </div>
+  </div>
+
+  <div data-step="3" data-key="coverage" style="display:none">
+    <p class="quiz__step-label">Step 3 of 3</p>
+    <p class="quiz__question">What level of coverage do you want?</p>
+    <div class="quiz__options">
+      <button class="quiz__option" data-value="min">State minimum (cheapest)</button>
+      <button class="quiz__option" data-value="mid">Min + collision (most common)</button>
+      <button class="quiz__option" data-value="full">Full coverage with extras</button>
+    </div>
+  </div>
+
+  <div data-step="4" style="display:none">
+    <p class="quiz__step-label">Your match</p>
+    <p class="quiz__question">Estimated monthly rate</p>
+    <div class="dollar-vis" style="margin: 8px 0 16px;">
+      <div class="dollar-vis__big" id="quiz-result-rate" style="font-size: 48px;">~ $30/mo</div>
+      <div class="dollar-vis__unit">Based on your profile</div>
+    </div>
+    <p style="font-size: 14px; color: var(--c-muted); margin: 0 0 16px;">Enter your ZIP below to see real quotes from top US providers matching this profile.</p>
     <form class="cta-form" novalidate>
-      <input class="cta-form__input" type="text" name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="Enter your ZIP code" required>
-      <button class="cta-form__button" type="submit">See My Quote</button>
+      <input class="cta-form__input" type="text" name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="ZIP code" required>
+      <button class="cta-form__button" type="submit">See My Quotes</button>
     </form>
-    <p class="cta-section__tiny">By continuing you agree to be matched with licensed agents. No spam. Rates may vary.</p>
-  </section>
+  </div>
+</div>
+
+<div class="article__body">
+<div class="callout">Estimates are illustrative based on profile averages. Real quotes depend on your full driving history, vehicle, and ZIP.</div>
+</div>
+
 </article>
 
 <footer class="disclaimer">
@@ -59,7 +89,44 @@
   <p>© 2026 DriverDigest. <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">CCPA</a></p>
 </footer>
 
-<script>window.OFFER_URL = window.OFFER_URL || 'https://example.com/quote';</script>
+<script>window.OFFER_URL = window.OFFER_URL || "https://example.com/quote";</script>
 <script src="assets/quote.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var step = 1;
+  var answers = {};
+  var steps = document.querySelectorAll('[data-step]');
+  var progress = document.getElementById('quiz-progress');
+  var resultRate = document.getElementById('quiz-result-rate');
+  function show(n) {
+    steps.forEach(function(s) {
+      s.style.display = (parseInt(s.getAttribute('data-step'), 10) === n) ? 'block' : 'none';
+    });
+    if (progress) progress.style.width = (n * 33.33) + '%';
+  }
+  document.querySelectorAll('.quiz__option').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var s = btn.closest('[data-step]');
+      var sn = parseInt(s.getAttribute('data-step'), 10);
+      var key = s.getAttribute('data-key');
+      answers[key] = btn.getAttribute('data-value');
+      step = sn + 1;
+      if (step > 3) {
+        // very rough rate estimate based on answers
+        var base = 30;
+        if (answers.miles === 'high') base += 18;
+        if (answers.miles === 'mid') base += 8;
+        if (answers.vehicles === 'one') base += 5;
+        if (answers.coverage === 'full') base += 12;
+        if (resultRate) resultRate.textContent = '~ $' + base + '/mo';
+        show(4);
+      } else {
+        show(step);
+      }
+    });
+  });
+  show(1);
+});
+</script>
 </body>
 </html>

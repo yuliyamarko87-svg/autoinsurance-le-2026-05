@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Low-Mileage Auto Insurance Options For US Drivers</title>
+<title>Drive Less Than 50 Miles A Day? See If You Qualify For Lower Rates</title>
 <link rel="stylesheet" href="assets/styles.css">
+
 </head>
 <body>
 <div class="advertorial-bar">Advertorial</div>
-
 <header class="site-header">
   <div class="site-header__inner">
-    <a href="#" class="site-header__logo">DriverDigest</a>
-    <nav class="site-header__nav">US Auto Insurance Guide</nav>
+    <a href="#" class="site-header__logo">Driver<span>Digest</span></a>
+    <nav class="site-header__nav">US Auto Insurance Guide · 2026</nav>
   </div>
 </header>
 
@@ -21,31 +21,43 @@
   <div class="article__meta">
     <span><strong>By</strong> Jamie Reynolds</span>
     <span><strong>Updated</strong> May 19, 2026</span>
-    <span>5 min read</span>
+    <span>3 min read</span>
   </div>
-
   <h1 class="article__headline">Drive Less Than 50 Miles A Day? See If You Qualify For Lower Rates</h1>
-  <p class="article__sub">Many US drivers don&#x27;t realize that driving fewer miles can mean lower auto insurance premiums.</p>
+  <p class="article__sub">Many drivers don't realize how much daily mileage affects their auto insurance premium.</p>
+  
+<div class="article__hero">[Hero: dashboard odometer close-up · crea-brief 03-A]</div>
 
-  <div class="article__hero">[Hero image — see crea-brief 03. Replace before launch.]</div>
+<div class="article__body">
+<p>Auto insurance is priced on risk, and risk goes up with miles. If you drive <strong>less than 50 miles a day</strong>, you may qualify for low-mileage or pay-per-mile rates that simply aren't shown to high-mileage drivers.</p>
+<p>The threshold matters — drivers logging under 30 miles/day typically see the steepest savings.</p>
+</div>
 
-  <div class="article__body">
-  <p>If your daily drive is short — to the store, to work nearby, or simply less than it used to be — you may be paying for miles you don't actually drive.</p>
-<p>Several US insurers now offer <strong>low-mileage</strong> or pay-per-mile options for drivers who log under 50 miles a day on average. Monthly rates for qualifying drivers <strong>start around $30 a month</strong>.</p>
-<div class="callout">Less time on the road usually means lower risk — and many insurers factor that into your premium when you compare.</div>
-<p>The first step is checking what's available for your driving pattern in your state. The comparison takes about 30 seconds and doesn't change your current policy.</p>
-<p>Enter your ZIP below to see options.</p>
-  </div>
+<div class="mileage-calc">
+  <p class="mileage-calc__title">How many miles do you drive on a typical weekday?</p>
+  <input type="range" id="mile-slider" class="mileage-calc__slider" min="5" max="100" value="35" step="5">
+  <p class="mileage-calc__readout" id="mile-readout">~ $38/mo</p>
+  <p class="mileage-calc__hint" id="mile-hint">35 miles a day · est. monthly premium based on profile averages</p>
+</div>
 
-  <section class="cta-section">
-    <h2 class="cta-section__title">See Your Auto Insurance Options</h2>
-    <p class="cta-section__sub">Free, takes about 30 seconds. Average monthly rates from $30.</p>
-    <form class="cta-form" novalidate>
-      <input class="cta-form__input" type="text" name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="Enter your ZIP code" required>
-      <button class="cta-form__button" type="submit">See My Quote</button>
-    </form>
-    <p class="cta-section__tiny">By continuing you agree to be matched with licensed agents. No spam. Rates may vary.</p>
-  </section>
+<div class="article__body">
+<h2>Why low-mileage drivers pay less</h2>
+<p>Fewer miles means fewer chances of being involved in a claim. Several US insurers now offer dedicated low-mileage tiers — some only visible if you ask, others built into pay-per-mile programs (you pay a small base + per-mile usage).</p>
+<div class="callout">If you work from home, drive short commutes, or share a car with a partner, you're likely a strong candidate for a low-mileage tier. Rates from $30/mo for qualifying drivers.</div>
+</div>
+
+
+<section class="cta-section">
+  <h2 class="cta-section__title">See Your Auto Insurance Options</h2>
+  <p class="cta-section__sub">Compare low-mileage rates in your state. Free, takes about 30 seconds.</p>
+  <form class="cta-form" novalidate>
+    <input class="cta-form__input" type="text" name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="Enter your ZIP code" required>
+    <button class="cta-form__button" type="submit">Check My Rate</button>
+  </form>
+  <p class="cta-section__tiny">Estimates above are illustrative. Actual quotes depend on full profile.</p>
+</section>
+
+
 </article>
 
 <footer class="disclaimer">
@@ -53,7 +65,28 @@
   <p>© 2026 DriverDigest. <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">CCPA</a></p>
 </footer>
 
-<script>window.OFFER_URL = window.OFFER_URL || 'https://example.com/quote';</script>
+<script>window.OFFER_URL = window.OFFER_URL || "https://example.com/quote";</script>
 <script src="assets/quote.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var slider = document.getElementById('mile-slider');
+  var readout = document.getElementById('mile-readout');
+  var hint = document.getElementById('mile-hint');
+  if (!slider) return;
+  function update() {
+    var v = parseInt(slider.value, 10);
+    var est;
+    if (v <= 20) est = 30;
+    else if (v <= 40) est = 38;
+    else if (v <= 60) est = 52;
+    else if (v <= 80) est = 71;
+    else est = 96;
+    readout.textContent = '~ $' + est + '/mo';
+    hint.textContent = v + ' miles a day · est. monthly premium based on profile averages';
+  }
+  slider.addEventListener('input', update);
+  update();
+});
+</script>
 </body>
 </html>
