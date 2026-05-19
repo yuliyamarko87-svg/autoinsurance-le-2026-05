@@ -155,3 +155,20 @@ a { color: var(--c-link); }
   .ba-card__amount { font-size: 28px; }
   .dollar-vis__big { font-size: 48px; }
 }
+
+/* === img-as-hero override === */
+img.article__hero {
+  background: none !important;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+  width: 100%;
+  margin: 0 0 24px;
+  border-radius: 8px;
+  display: block;
+  color: transparent;
+  padding: 0;
+}
+img.story-figure__img {
+  background: none !important;
+  display: block;
+}
